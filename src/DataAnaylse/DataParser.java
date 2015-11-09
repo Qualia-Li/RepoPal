@@ -13,7 +13,7 @@ import java.util.Vector;
 public class DataParser {
 
     public static void parse(Vector<Repository> mVecRepo) throws IOException, ParseException {
-        BufferedReader mIn = new BufferedReader(new FileReader(new File("data/watchers.csv")));
+        BufferedReader mIn = new BufferedReader(new FileReader(new File("data/TopRepoData.csv")));
         String mBuf = null;
         SimpleDateFormat sdf = new SimpleDateFormat("\"yyyy-MM-dd HH:mm:ss\"");
 
@@ -21,6 +21,7 @@ public class DataParser {
 
         int i = 0;
         int mSize = 10000;
+//        int mSize = 10;
 
         while(mIn.ready())
         {

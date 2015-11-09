@@ -1,7 +1,11 @@
 package DataAnaylse;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
@@ -13,8 +17,13 @@ public class DataCalculator {
     public static void main(String[] args) throws IOException, ParseException {
         int mSize = 10000;
         long mAdjustment = 3*60*60;
+//        int mSize = 10;
+//        long mAdjustment = 3600;
 
-        Vector<Repository> mVecRepo = new Vector<Repository>();
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        FileOutputStream mFos = new FileOutputStream(new File("result/result_" + timeStamp + ".txt"));
+
+        Vector<Repository> mVecRepo = new Vector<>();
         double[][] result = new double[mSize][mSize];
 
         for(int i=0; i<mSize; i++){
@@ -42,7 +51,7 @@ public class DataCalculator {
                     if(mVecRepo.get(k).getMapUserDate().containsKey(mUserId)) {
                         Date mTime2 = mVecRepo.get(k).getMapUserDate().get(mUserId);
                         long mDiff = Math.abs(mTime1.getTime() - mTime2.getTime()) / 1000;
-                        result[i][k] = result[k][i] = result[i][k] + 1/(mDiff + mAdjustment);
+                        result[i][k] = result[k][i] = result[i][k] + 1.0/(mDiff + mAdjustment);
                     }
                 }
             }
@@ -50,9 +59,9 @@ public class DataCalculator {
 
         for(int i=0; i<mSize; i++){
             for(int j=0; j<mSize; j++) {
-                System.out.print(result[i][j] + " ");
+                mFos.write((result[i][j] + " ").getBytes());
             }
-            System.out.println();
+            mFos.write("\r\n".getBytes());
         }
     }
 
