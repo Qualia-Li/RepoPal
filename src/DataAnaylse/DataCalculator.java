@@ -14,7 +14,7 @@ import java.util.Vector;
  */
 public class DataCalculator {
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void calculate() throws IOException, ParseException {
         int mSize = 10000;
         long mAdjustment = 3*60*60;
 //        int mSize = 10;
