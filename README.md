@@ -6,6 +6,8 @@ This approach is been compared to CLAN implemented on GitHub, which can be found
 
 This repository is just the Star Relevance Calculator component, not the whole system.
 
+For more information about the research on Detecting Similar Repositories on GitHub, please visit http://www.liquanlai.com/blog/?p=195.
+
 ##Heuristics
 1. Projects that are starred by the same users within a short period of time are likely to be similar with one another.
 2. Projects whose readme files contain similar contents are likely to be similar with one another.
